@@ -1,0 +1,197 @@
+<view class="page">
+  <!-- <header background-color="#fff" color="#000" fixed showNav="{{true}}" back="0">{{agent?'代理商':'全部订单▼'}}</header> -->
+  <header background-color="#fff" color="#000" fixed showNav="{{true}}" back="0">
+    <picker bindchange="guideChange" range-key='name' range="{{deliveryCenterList}}" wx:if="{{agent}}">
+      {{storeName}}
+    </picker>
+    <view wx:if="{{!agent}}">
+      {{storeName}}
+    </view>
+  </header>
+  <!-- <loading wx:if="{{loading}}">加载中</loading> -->
+  <view class='tapWrapp flex' style="top:{{isIphoneX?'90px':'64px'}}">
+    <view class='flex-item tc' style='flex:1'>
+      <picker mode="date" value="{{begin_year}}-{{begin_month}}-{{begin_day}}" start="2015-09-01" end="{{nowyear}}-{{nowmonth}}-{{nowdate}}" fields="day" bindchange="bindBeginDateChange">
+        <view class="picker f12">
+          开始日期
+        </view>
+        <view class="picker f12">
+          {{begin_year}}.{{begin_month}}.{{begin_day}}
+        </view>
+      </picker>
+    </view>
+    <view class='orderTab tc f12 flex-item' style="flex:2;visibility:{{agent?'hidden':'visible'}}">
+      <text class="{{currentOrderTab==0 ? 'active' : ''}}" data-current="0" bindtap="swichOrderTab" data-otype="myOrder">我的订单</text>
+      <text class="{{currentOrderTab==1 ? 'active' : ''}}" data-current="1" bindtap="swichOrderTab" data-otype="allOrder">全部订单</text>
+    </view>
+    <view class='flex-item tc' style='flex:1'>
+      <picker mode="date" value="{{end_year}}-{{end_month}}-{{end_day}}" start="2015-09-01" end="{{nowyear}}-{{nowmonth}}-{{nowdate}}" fields="day" bindchange="bindEndDateChange">
+        <view class="picker f12">
+          结束日期
+        </view>
+        <view class="picker f12">
+          {{end_year}}.{{end_month}}.{{end_day}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="swiper-tab top" style="top:{{isIphoneX?'130px':'104px'}}">
+    <!-- <view class="f14 swiper-tab-list" style="color:{{currentTab==0 ? mainColor : ''}};border-bottom:2px solid {{currentTab==0 ?  mainColor: 'transparent'}}" data-type="all" data-current="0" bindtap="swichNav">全部</view> -->
+    <!-- <view class="f14 swiper-tab-list" style="color:{{currentTab==1 ? mainColor : ''}};border-bottom:2px solid {{currentTab==1 ?  mainColor: 'transparent'}}" data-type="unpaid" data-current="1" bindtap="swichNav">代付款</view> -->
+    <view class="f14 swiper-tab-list" style="color:{{currentTab==0 ? mainColor : ''}};border-bottom:2px solid {{currentTab==0 ?  mainColor: 'transparent'}}" data-type="unshipped" data-current="0" bindtap="swichNav">待发货</view>
+    <view class="f14 swiper-tab-list" style="color:{{currentTab==1 ? mainColor : ''}};border-bottom:2px solid {{currentTab==1 ?  mainColor: 'transparent'}}" data-type="unreciver" data-current="1" bindtap="swichNav">已发货</view>
+    <view class="f14 swiper-tab-list" style="color:{{currentTab==2 ? mainColor : ''}};border-bottom:2px solid {{currentTab==2 ?  mainColor: 'transparent'}}" data-type="accept" data-current="2" bindtap="swichNav">已完成</view>
+  </view>
+  <swiper current="{{currentTab}}" bindtouchstart='touchstart' bindtouchend='touchend' bindtouchmove='touchmove' class="swiper-box" duration="0" style="height:{{winHeight - 135}}px;" bindchange="bindChange">
+    <!-- <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y bindscroll="scroll" bindscrolltolower="lower">
+        <block wx:for="{{all}}" wx:key="id">
+          <template is="orderList" data="{{item:item,mainColor}}"></template>
+        </block>
+        <view class="tips f12">
+          {{allTips}}
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y bindscroll="scroll" bindscrolltolower="lower">
+        <block wx:for="{{unpaid}}" wx:key="id">
+          <template is="orderList" data="{{item:item,mainColor}}"></template>
+        </block>
+        <view class="tips f12">{{unpaidTips}}
+        </view>
+      </scroll-view>
+    </swiper-item> -->
+    <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y bindscroll="scroll" bindscrolltolower="lower">
+        <block wx:for="{{unshipped}}" wx:key="id" wx:for-index="index">
+          <template is="orderList" data="{{item:item,mainColor,index:index}}"></template>
+        </block>
+        <view class="tips f12">{{unshippedTips}}
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y bindscroll="scroll" bindscrolltolower="lower">
+        <block wx:for="{{unreciver}}" wx:key="id" wx:for-index="index">
+          <template is="orderList" data="{{item:item,mainColor,index:index}}"></template>
+        </block>
+        <view class="tips f12">{{unreciverTips}}
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="pullDownRefresh">
+        <block wx:for="{{accept}}" wx:key="id" wx:for-index="index">
+          <template is="orderList" data="{{item:item,mainColor,index:index}}"></template>
+        </block>
+        <view class="tips f12">
+          {{acceptTips}}
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+  <include src="/template/actionsheet/actionsheet.wxml" />
+  <include src="/template/password/payPassword.wxml" />
+</view>
+<view class='bottomSaleInfo flex f14 tc' wx:if="{{currentTab==0}}">
+  <view class='flex-item'>订单总数：{{allOrderNum.unshipped}}</view>
+  <view class='flex-item'>销售额：{{allOrderPay.unshipped}}元</view>
+  <view class='flex-item'>分润：{{allOrderProfit.unshipped}}元</view>
+</view>
+<view class='bottomSaleInfo flex f14 tc' wx:if="{{currentTab==1}}">
+  <view class='flex-item'>订单总数：{{allOrderNum.unreciver}}</view>
+  <view class='flex-item'>销售额：{{allOrderPay.unreciver}}元</view>
+  <view class='flex-item'>分润：{{allOrderProfit.unreciver}}元</view>
+</view>
+<view class='bottomSaleInfo flex f14 tc' wx:if="{{currentTab==2}}">
+  <view class='flex-item'>订单总数：{{allOrderNum.accept}}</view>
+  <view class='flex-item'>销售额：{{allOrderPay.accept}}元</view>
+  <view class='flex-item'>分润：{{allOrderProfit.accept}}元</view>
+</view>
+<template name="orderList">
+  <view class="ordersWrap">
+    <view class="flexC title borderA" bindtap='goorderDetail' data-id="{{item.id}}">
+      <view class="name f12">订单编号：{{item.sn}}
+      </view>
+      <view class="orderType f14 clr_orange" style='color:{{mainColor}}'>{{item.shippingMethod.method == 'F2F'?'('+item.shippingMethod.name+')':''}}{{item.finalOrderStatus.desc}}</view>
+    </view>
+
+    <view class="flexC details borderA" bindtap='goorderDetail' data-id="{{item.id}}">
+      <view class="orderImg" style='flex:7;'>
+        <block wx:for="{{item.orderItems}}" wx:key="id" wx:for-item="orderItem">
+          <image src="{{orderItem.thumbnail?orderItem.thumbnail:'/resources/user.png'}}" style='width:100rpx;height:100rpx;margin-right:10rpx;'></image>
+        </block>
+        <view class='f14 clr_mediumGray'>收件人：{{item.consignee}}</view>
+        <view class='f14 clr_mediumGray'>成交时间：{{item.create_date}}</view>
+      </view>
+      <view class='f12' style='flex:1;'>共{{item.quantity}}件</view>
+    </view>
+
+
+
+    <view class="orderTotal borderA f14" style='justify-content:space-between;'>
+      <!-- <view class='tl clr_red' style='margin-left:0;' bindtap='clickBonus' data-index="{{index}}">分润： -->
+      <view class='tl clr_red' style='margin-left:0;'  data-index="{{index}}">分润：
+        <text style='color:{{mainColor}}'>{{item.brokerage}}</text>元
+        <!-- <text class='f12 clr_lightGray' wx:if="{{!item.showBonusDetail}}">(点击查看明细)</text> -->
+        <!-- <text class='f12 clr_lightGray' wx:if="{{item.showBonusDetail}}">(点击关闭)</text> -->
+      </view>
+      <view>合计
+        <text class="clr_orange" style='color:{{mainColor}}'>￥{{item.amount}}</text> (含运费
+        <text class="clr_orange" style='color:{{mainColor}}'>￥{{item.freight}}</text>)</view>
+    </view>
+
+    <view class="tableWrap" wx:if="{{item.showBonusDetail}}">
+      <view class="table">
+        <view class="tr f12 font500">
+          <view class="th">分配角色</view>
+          <view class="th">佣金类型</view>
+          <view class="th">分配佣金</view>
+          <view class="th">佣金描述</view>
+          <view class="th">是否入账</view>
+        </view>
+        <view class="tr f12" wx:for="{{5}}">
+          <view class="td">张三</view>
+          <view class="td">销售佣金</view>
+          <view class="td">￥29.66</view>
+          <view class="td">货架加盟商店主分润</view>
+          <view class="td">待入账</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- <view class="method f14">
+      <block wx:if="{{item.finalOrderStatus.status == 'waitPay'}}">
+        <view data-type="refund" data-info="{{item.id}}" catchtap="methodBtn">取消订单</view>
+        <form bindsubmit="formSubmit" report-submit bindreset="formReset">
+          <button data-type="waitpay" class="confirmBtn" form-type="submit" data-info="{{item.id}}" style="border:1px solid #d9d9d9;line-height:1.6;margin-left:20rpx;margin-right:0;font-size:32rpx;">立即支付</button>
+        </form>
+      </block>
+      <block wx:elif="{{item.finalOrderStatus.status == 'unconfirmed'}}">
+        <view data-type="refund" data-info="{{item.id}}" catchtap="methodBtn">取消订单</view>
+      </block>
+      <block wx:elif="{{item.finalOrderStatus.status == 'waitShipping'}}">
+        <block wx:if="{{item.shippingMethod.method == 'TPL'}}">
+          <view data-type="return" data-info="{{item.id}}" catchtap="methodBtn">退货申请</view>
+          <view data-type="remind" data-info="{{item.id}}" class="confirmBtn" catchtap="methodBtn">提醒商家发货</view>
+        </block>
+        <block wx:else>
+          <view data-type="return" data-info="{{item.id}}" catchtap="methodBtn">退货申请</view>
+        </block>
+      </block>
+      <block wx:elif="{{item.finalOrderStatus.status == 'sign'}}">
+        <view data-type="return" data-info="{{item.id}}" catchtap="methodBtn">退货</view>
+        <view wx:if="{{item.shippings[0].trackingNo}}" data-type="logistics" data-info="{{item.shippings[0].trackingNo}}" catchtap="methodBtn">查看物流</view>
+        <view data-type="confirm" data-info="{{item.id}}" class="confirmBtn" catchtap="methodBtn">立即签收</view>
+      </block>
+      <block wx:elif="{{item.finalOrderStatus.status == 'toReview'}}">
+        <view data-type="evaluate" data-info="{{item.id}}" class="confirmBtn" catchtap="methodBtn">立即评价</view>
+      </block>
+      <block wx:elif="{{item.finalOrderStatus.status == 'waitReturn'}}">
+        <view data-type="remind" data-info="{{item.id}}" class="confirmBtn" catchtap="methodBtn">提醒商家退款</view>
+      </block>
+
+    </view> -->
+  </view>
+</template>

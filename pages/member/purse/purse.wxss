@@ -1,0 +1,73 @@
+/* pages/index/purse/purse.wxss */
+
+page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.purseTop {
+  background: #666;
+  width: 100%;
+  border-bottom: 1px solid #fff;
+}
+
+.purseTop .title {
+  padding-top: 5vw;
+  padding-left: 6vw;
+}
+
+.freezeBalance {
+  padding-bottom: 3vw;
+  padding-left: 6vw;
+}
+
+.purseTop .amount {
+  padding: 6vw 0 4vw 6vw;
+}
+
+.purseMd {
+  background: #535353;
+  width: 100%;
+}
+
+.purseMd .flex-item view {
+  padding: 2vw 0;
+}
+
+.purseMd .flex-item view:last-child {
+  padding-top: 0;
+}
+
+.purseBt {
+  width: 100%;
+  background: #fff;
+}
+
+.purseBt view {
+  padding: 5vw 0;
+}
+
+.link {
+  width: 100%;
+  background: #fff;
+  margin-top: 2vw;
+  position: relative;
+  z-index: 99;
+}
+
+.link .lineItem {
+  padding: 4vw;
+}
+
+.link .lineItem.border_bottom::after {
+  left: 15px;
+}
+
+.loginBtn {
+  width: 500rpx;
+  line-height: 88rpx;
+  border-radius: 88rpx;
+  color: #fff;
+  background: #4aa4f0;
+  margin-top: 20px;
+}

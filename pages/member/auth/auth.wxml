@@ -1,0 +1,50 @@
+<view class="page">
+  <form bindsubmit="revise">
+
+    <view class="line">
+      <view class="head">
+        <text class="clr_red">*</text> 姓名
+      </view>
+      <view class="classname">
+        <input bindinput="name" placeholder="请输入姓名" placeholder-style="font-size:12px" />
+      </view>
+    </view>
+
+    <view class="line">
+      <view class="head">
+        <text class="clr_red">*</text> 证件号
+      </view>
+      <view class="classname">
+        <input type="idcard" bindinput="idCard" placeholder="请输入身份证号码" placeholder-style="font-size:12px" />
+      </view>
+    </view>
+
+
+    <text class="title"><text class="clr_red">*</text> 点击图片上传身份证正面照</text>
+    <view class="wrapper">
+      <view class="idcard" bindtap="uploadzheng">
+        <image src="{{zhengmian}}"></image>
+      </view>
+      <view class="alertinfo">
+        <text>1.要求全部信息无遮挡</text>
+        <text>2.证件上文字清晰可识别</text>
+      </view>
+    </view>
+
+    <text class="title"><text class="clr_red">*</text> 点击图片上传身份证反面照</text>
+    <view class="wrapper">
+      <view class="idcard" bindtap="uploadfan">
+        <image src="{{fanmian}}"></image>
+      </view>
+      <view class="alertinfo">
+        <text>1.要求全部信息无遮挡</text>
+        <text>2.证件上文字清晰可识别</text>
+      </view>
+    </view>
+    <view class="next">
+      <button type="{{backgroundBtn}}" class="submit" bindtap="submit">{{next}}</button>
+    </view>
+  </form>
+  
+
+</view>

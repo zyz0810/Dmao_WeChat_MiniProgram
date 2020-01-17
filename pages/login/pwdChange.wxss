@@ -1,0 +1,43 @@
+/* pages/login/login.wxss */
+
+page {
+  background: #fff;
+}
+
+.line {
+  width: 590rpx;
+  margin: 60rpx auto;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5rpx;
+}
+
+.line input {
+  width: 100%;
+  flex: 1;
+  padding-left: 30rpx;
+  margin-top: 9rpx;
+}
+
+.line text {
+  margin-top: 15rpx;
+}
+
+.line image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+}
+
+.loginBtn {
+  width: 610rpx;
+  line-height: 88rpx;
+  border-radius: 88rpx;
+  color: #fff;
+  background: #4aa4f0;
+}
+
+.loginBtn::after, .loginBtn::before {
+  border: 0;
+}

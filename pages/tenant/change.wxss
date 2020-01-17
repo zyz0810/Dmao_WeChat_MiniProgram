@@ -1,0 +1,30 @@
+/* pages/tenant/index.wxss */
+
+.tenantList {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 4% 2%;
+}
+
+.tenantList .left {
+  width: 90rpx;
+  height: 90rpx;
+  padding-left: 35rpx;
+}
+
+.tenantList .left image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.tenantList .center {
+  margin-left: 50rpx;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tenantList .center .desc {
+  border: 1px solid #4aa4f0;
+  padding: 4rpx 8rpx;
+  color: #4aa4f0;
+}

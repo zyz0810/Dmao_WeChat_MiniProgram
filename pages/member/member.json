@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的",
+  "usingComponents": {
+    "technical-component": "/component/technical/technical"
+  }
+}

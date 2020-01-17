@@ -1,0 +1,19 @@
+<view class='container'>
+  <view class='lineItem tenantList' wx:for="{{tenantList}}" wx:key="{{id}}" bindtap='selectTenant' data-id="{{item.id}}" data-name="{{item.name}}">
+    <view class='left'>
+      <image src="{{item.thumbnail?item.thumbnail:'/resources/images/noneimg.png'}}"></image>
+    </view>
+    <view class='center'>
+      <view class='f16'>{{item.name}}</view>
+      <view>
+        <!-- <text class='f12 desc'>{{item.category}}</text> -->
+        <text class='f12 desc'>挑货零售</text>
+      </view>
+    </view>
+    <view class='right'>
+      <!-- <checkbox checked='{{item.id==tenantId?true:false}}'></checkbox> -->
+      <image wx:if="{{item.id==tenantId}}" src='/resources/images/member/select.png' style='width:53rpx;height:53rpx;'></image>
+      <image wx:if="{{item.id!=tenantId}}" src='/resources/images/member/select_no.png' style='width:53rpx;height:53rpx;'></image>
+    </view>
+  </view>
+</view>

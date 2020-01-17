@@ -1,0 +1,211 @@
+<wxs src="../../wxs/imageCut.wxs" module="imageCut" />
+<wxs module="toFixed">
+  module.exports = function(num) {
+    return Math.floor(num * 100) / 100
+  }
+</wxs>
+<import src="../wxParse/wxParse.wxml" />
+<!--swiper  -->
+<import src="/template/swiper/swiper.wxml" />
+
+<view class="container" wx:if="{{homeLoadReady}}">
+  <!--头部  -->
+  <!-- <view class="head" id="top"> -->
+  <!--轮播  -->
+  <!-- <template is="adSwiper" data="{{_swiper,name:'top',data:topImgs.data,key:topImgs.key,fn:'adTap'}}"></template> -->
+  <!-- </view> -->
+
+  <view class='flex newsWrap' wx:if="{{runInfos.length>0 && showRank}}">
+    <view style='flex:1' class='flex_item f14 titleLeft' bindtap='goGrarticle'>
+      <image src='/resources/images/icon/voice.png'></image>
+    </view>
+    <swiper class='txt_swiper flex_item' autoplay interval="4000" duration="3000" vertical="true" style='flex:10' circular="true">
+      <block wx:for="{{runInfos}}" wx:key="{{item.lastSaleAmount}}">
+        <swiper-item>
+          <view class='swiper_txt'>
+            <view class='clr_darkGray f14 overone' style='line-height:60rpx;'>"{{item.username}}"在门店"{{item.shortName}}"成交了{{item.lastSaleAmount}}元</view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+
+
+  <!--排名部分  -->
+  <view class='shelvesRank'>
+    <view class='shelvesRankTitle flex'>
+      <view class='f16 bold clr_mediumGray overtwo  flex-item' wx:if="{{currentTab==0}}">{{activityName}}</view>
+      <view class='f16 bold clr_mediumGray overtwo flex-item' wx:if="{{currentTab==1}}">{{activityName2}}</view>
+      <!-- <view class='title f17 bold flex-item'>销售排名</view> -->
+      <!-- <view class='flex-item flex f15 filter tc'>
+        <view class="flex-item {{currentTab==0?'active':''}}" bindtap='selectTab' data-tab="0" style="{{!memberRoleShopper?'visibility:hidden;':''}}">网点</view>
+        <view class="flex-item {{currentTab==1?'active':''}}" bindtap='selectTab' data-tab="1" style="visibility:{{showClerkRank?'visible':'hidden'}}">销售员</view>
+      </view> -->
+    </view>
+
+    <!-- <view class='line'></view> -->
+    <!--奖池部分  -->
+    <view class='bonus' wx:if="{{currentTab==0}}">
+      <view class='rule' bindtap='showRankList' style='padding:20rpx 0 0 50rpx;justify-content:flex-start'>
+        <image src='/resources/images/history.png' style='width:40rpx;height:40rpx;'></image>
+        <text class='f14'>往期回顾</text>
+      </view>
+      <view class='rule' bindtap='clickShowRule'>
+        <image src='/resources/images/member/rule.png' style='width:24rpx;height:24rpx;'></image>
+        <text class='f11'>活动规则</text>
+      </view>
+      <view class='detail flex clr-white' style="background:{{finish?'#cecece':'#e7cd99'}};position:relative;">
+        <view class='flex-item image' style='flex:3'>
+          <image src='/resources/images/member/bonus.png' wx:if="{{!finish}}"></image>
+          <image src='/resources/images/member/bonus_gray.png' wx:if="{{finish}}"></image>
+        </view>
+        <view class='flex-item amount tc f25' style='flex:7'>{{showRank?totalAmount:0}}</view>
+        <view class='flex-item f14 tc' style='flex:2;margin-top:20rpx;'>
+          <view>累计</view>
+          <view>奖励</view>
+        </view>
+        <image wx:if="{{finish}}" src='/resources/images/member/finished.png' style='width:280rpx;height:273rpx;position:absolute;top:-26rpx;right:-40rpx;z-index:1000;'></image>
+      </view>
+      <view class='time'>
+        <view style="width:{{finish?100:percent}}%;">
+          <image wx:if="{{!finish}}" src='/resources/images/member/progress.png' style='width:650rpx;height:14rpx;'></image>
+          <image wx:if="{{finish}}" src='/resources/images/member/progress_gray.png' style='width:650rpx;height:14rpx;'></image>
+        </view>
+        <image src='/resources/images/member/position.png' class='position' style='left:{{finish?99:percent-1}}%;'></image>
+      </view>
+      <view class='f12 clr_lightGray tc' wx:if="{{showRank}}">
+        <text>活动时间:{{startDate}}-</text>
+        <text>{{endDate}}</text>
+      </view>
+      <view class='tc f25 ' style='position:relative;height:80rpx;' wx:if="{{showRank}}">
+        <text class='f20 ' wx:if="{{!finish}}" style='position:absolute;left:70rpx;top:0rpx;'>倒计时</text>
+        <text class='clr_lightGray bold' wx:if="{{!finish}}">{{timeStap.countDownHour}}:{{timeStap.countDownMinute}}:{{timeStap.countDownSecond}}</text>
+      </view>
+    </view>
+
+    <view class='bonus' wx:if="{{currentTab==1}}">
+      <view class='rule' bindtap='clickShowRule'>
+        <image src='/resources/images/member/rule.png' style='width:24rpx;height:24rpx;'></image>
+        <text class='f11'>活动规则</text>
+      </view>
+      <view class='detail flex clr-white' style="background:{{finish2?'#cecece':'#e7cd99'}};position:relative;">
+        <view class='flex-item image' style='flex:3'>
+          <image src='/resources/images/member/bonus.png' wx:if="{{!finish2}}"></image>
+          <image src='/resources/images/member/bonus_gray.png' wx:if="{{finish2}}"></image>
+        </view>
+        <view class='flex-item amount tc f25' style='flex:7'>{{totalAmount2}}</view>
+        <view class='flex-item f14 tc' style='flex:2;margin-top:20rpx;'>
+          <view>累计</view>
+          <view>奖励</view>
+        </view>
+        <image wx:if="{{finish2}}" src='/resources/images/member/finished.png' style='width:280rpx;height:273rpx;position:absolute;top:-26rpx;right:-40rpx;z-index:1000;'></image>
+      </view>
+      <view class='time'>
+        <view style="width:{{finish2?100:percent2}}%;">
+          <image wx:if="{{!finish2}}" src='/resources/images/member/progress.png' style='width:650rpx;height:14rpx;'></image>
+          <image wx:if="{{finish2}}" src='/resources/images/member/progress_gray.png' style='width:650rpx;height:14rpx;'></image>
+        </view>
+        <image src='/resources/images/member/position.png' class='position' style='left:{{finish2?99:percent2-1}}%;'></image>
+      </view>
+      <view class='f12 clr_lightGray tc'>
+        <text>活动时间:{{startDate1}}-</text>
+        <text>{{endDate1}}</text>
+      </view>
+      <view class='tc f25 ' style='position:relative;height:80rpx;'>
+        <text class='f20 ' wx:if="{{!finish2}}" style='position:absolute;left:70rpx;top:0rpx;'>倒计时</text>
+        <text class='clr_lightGray bold' wx:if="{{!finish2}}">{{timeStap2.countDownHour}}:{{timeStap2.countDownMinute}}:{{timeStap2.countDownSecond}}</text>
+      </view>
+    </view>
+    <view class="table_normal" wx:if="{{currentTab==0}}">
+      <view class="tab_tr bg-w  f15" style='padding-top:20rpx;'>
+        <view class="th" style='width:22%;'>排名</view>
+        <view class="th" style='width:42%;'>门店</view>
+        <view class="th" style='width:18%;'>销售额</view>
+        <!-- <view class="th" style='width:15%;'>分润</view> -->
+        <view class="th" style='width:18%;'>预计奖励</view>
+      </view>
+      <view class='rankList'>
+        <block wx:for="{{shopkeeperList}}" wx:key="{{item.ranking}}">
+          <view class="tab_tr f12 ">
+            <view class="td clr_title overone rank" style='width:22%;'>{{index+1}}.{{item.username}}
+              <view wx:if="{{item.numRank>0}}" class="f9 rankChange">
+                <image src='/resources/images/member/rank_up.png'></image>{{item.numRank}}
+              </view>
+              <view wx:if="{{item.numRank<0}}" class="f9 rankChange">
+                <image src='/resources/images/member/rank_down.png'></image>{{item.numRank*-1}}
+              </view>
+            </view>
+            <view class="td clr_title overone" style='width:42%;'>{{item.shortName}}</view>
+            <view class="td clr_title overone" style='width:18%;'>{{item.oneAmount}}</view>
+            <!-- <view class="td clr_title overone" style='width:15%;'>{{item.shareProfit}}</view> -->
+            <view class="td clr_title overone bold" style='width:18%;'>{{item.predictBonus}}元</view>
+          </view>
+        </block>
+      </view>
+      <view class="tab_tr f12 selfList" wx:if="{{rankshoperSelf}}">
+        <view class="td clr_title overone rank" style='width:22%;'>{{rankshoperSelf.ranking}}.{{rankshoperSelf.username}}
+        </view>
+        <view class="td clr_title overone" style='width:42%;'>{{rankshoperSelf.shortName}}</view>
+        <view class="td clr_title overone" style='width:18%;'>{{toFixed(rankshoperSelf.oneAmount)}}</view>
+        <!-- <view class="td clr_title overone" style='width:15%;'>{{rankshoperSelf.shareProfit}}</view> -->
+        <view class="td clr_title overone bold" style='width:18%;'>{{toFixed(rankshoperSelf.predictBonus)}}元</view>
+      </view>
+    </view>
+
+    <!-- <view class="table_normal" wx:if="{{currentTab==1}}">
+      <view class="tab_tr bg-w  f15" style='padding-top:20rpx;'>
+        <view class="th" style='width:17%;'>排名</view>
+        <view class="th" style='width:35%;'>门店</view>
+        <view class="th" style='width:15%;'>销售额</view>
+        <view class="th" style='width:15%;'>分润</view>
+        <view class="th" style='width:18%;'>预计奖励</view>
+      </view>
+      <view class='rankList'>
+        <block wx:for="{{clerkList}}" wx:key="*this">
+          <view class="tab_tr f12 ">
+            <view class="td clr_title overone rank" style='width:17%;'>{{index+1}}.{{item.username}}
+              <view wx:if="{{item.numRank>0}}" class="f9 rankChange">
+                <image src='/resources/images/member/rank_up.png'></image>{{item.numRank}}
+              </view>
+              <view wx:if="{{item.numRank<0}}" class="f9 rankChange">
+                <image src='/resources/images/member/rank_down.png'></image>{{item.numRank*-1}}
+              </view>
+            </view>
+            <view class="td clr_title overone" style='width:35%;'>{{item.shortName}}</view>
+            <view class="td clr_title overone" style='width:15%;'>{{item.oneAmount}}</view>
+            <view class="td clr_title overone" style='width:15%;'>{{item.shareProfit}}</view>
+            <view class="td clr_title overone bold" style='width:18%;'>{{item.predictBonus}}元</view>
+          </view>
+        </block>
+      </view>
+      <view class="tab_tr f12 selfList" wx:if="{{rankclerkSelf}}">
+        <view class="td clr_title overone rank" style='width:17%;'>{{rankclerkSelf.ranking}}.{{rankclerkSelf.username}}
+        </view>
+        <view class="td clr_title overone" style='width:35%;'>{{rankclerkSelf.shortName}}</view>
+        <view class="td clr_title overone" style='width:15%;'>{{rankclerkSelf.oneAmount}}</view>
+        <view class="td clr_title overone" style='width:15%;'>{{rankclerkSelf.shareProfit}}</view>
+        <view class="td clr_title overone bold" style='width:18%;'>{{rankclerkSelf.predictBonus}}元</view>
+      </view>
+    </view> -->
+
+    <view class='activityRule' wx:if="{{currentTab==0 && showActivityRule}}">
+      <view class='iconfont icon-cancel f30 clr-white' bindtap='closeRule'></view>
+      <view class="wxParse padding2 activityRuleCont f14">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+    </view>
+    <view class='activityRule' wx:if="{{currentTab==1 && showActivityRule}}">
+      <view class='iconfont icon-cancel f30 clr-white' bindtap='closeRule'></view>
+      <view class="wxParse padding2 activityRuleCont">
+        <template is="wxParse" data="{{wxParseData:article2.nodes}}" />
+      </view>
+    </view>
+    <view class='actionMask' wx:if="{{showActivityRule}}"></view>
+
+  </view>
+
+  <view wx:if="{{!showRank}}" class='f20 tc padding2 bold'>{{requestInfo}}</view>
+
+</view>
+<button loading class="f16 loadBtn" hidden="{{homeLoadReady}}">加载中</button>

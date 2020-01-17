@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/tenant/index",
+    "pages/tenant/change",
+    "pages/home/home",
+    "pages/home/rank/list",
+    "pages/home/rank/detail",
+    "pages/include/captcha/captcha",
+    "pages/news/view/view",
+    "pages/register/register",
+    "pages/login/password",
+    "pages/login/pwdChange",
+    "pages/member/purse/purse",
+    "pages/member/auth/auth",
+    "pages/member/auth/status",
+    "pages/member/bank/bank",
+    "pages/member/order/order",
+    "pages/member/order/orderDetails/orderDetails",
+    "pages/member/password/password",
+    "pages/member/purse/cash/cash",
+    "pages/member/purse/cash/status",
+    "pages/member/purse/bill/bill",
+    "pages/member/purse/freezeBill/bill",
+    "pages/member/purse/charge/charge",
+    "pages/member/purse/bankList/bankList"
+  ],
+  "tabBar": {
+    "color": "#999999",
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#4aa4f0",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "排名",
+        "iconPath": "/resources/images/tabBar/home.png",
+        "selectedIconPath": "/resources/images/tabBar/home-sel.png"
+      },
+      {
+        "pagePath": "pages/member/order/order",
+        "text": "订单",
+        "iconPath": "/resources/images/tabBar/tenant.png",
+        "selectedIconPath": "/resources/images/tabBar/tenant-sel.png"
+      },
+      {
+        "pagePath": "pages/member/purse/purse",
+        "text": "个人中心",
+        "iconPath": "/resources/images/tabBar/me.png",
+        "selectedIconPath": "/resources/images/tabBar/me-sel.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": ".",
+    "navigationBarTextStyle": "black"
+  }
+}

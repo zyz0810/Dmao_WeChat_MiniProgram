@@ -1,0 +1,23 @@
+<!--pages/login/login.wxml-->
+<view class='container'>
+  <view class='logo'>
+    <image src='/resources/images/member/logo.png'></image>
+  </view>
+  <view class='line f14'>
+    <text>国家</text>
+    <input placeholder='请输入账号' placeholder-style='font-size:32rpx;' value='中国+86' disabled='true'></input>
+  </view>
+  <view class='line f14' style="border-bottom:{{focusName?'1px solid #4aa4f0':'1px solid #dddddd'}}">
+    <text>账号</text>
+    <input placeholder='请输入账号' maxlength='11' type='number' placeholder-style='font-size:32rpx;' bindfocus='focusName' bindblur='blurName' bindinput='userName' value='{{userName}}'></input>
+  </view>
+  <view class='line f14' style="border-bottom:{{focusPwd?'1px solid #4aa4f0':'1px solid #dddddd'}}">
+    <text>密码</text>
+    <input placeholder='请输入密码' type='password' placeholder-style='font-size:32rpx;' bindfocus='focusPwd' bindblur='blurPwd' bindinput='passWord' value='{{passWord}}'></input>
+  </view>
+  <button class='loginBtn' style='opacity:{{opacity}}' bindtap='loginSub'>登录</button>
+  <view class='flex f14 operate'>
+    <view class='flex-item tl' bindtap="register">快速注册</view>
+    <view class='flex-item tr' bindtap='forgetPwd'>忘记密码?</view>
+  </view>
+</view>

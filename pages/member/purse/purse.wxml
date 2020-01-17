@@ -1,0 +1,86 @@
+<!--pages/index/purse/purse.wxml-->
+
+<view class="container">
+
+  <view class="purseTop tl">
+    <view class="clr-white f16 title">余额账户(元)</view>
+    <view class="f60 clr-white bold amount overone">{{balance}}</view>
+    <navigator url='freezeBill/bill'>
+      <view class="freezeBalance clr-white f14 overone">冻结金额 {{freezeBalance}} 元</view>
+    </navigator>
+  </view>
+
+  <view class="link f14">
+    <!-- <view class="lineItem border_bottom" bindtap="charge">
+      <view class="left">
+        <text class="iconfont icon-card clr_lightGray f20"></text>
+      </view>
+      <view class="center">
+        <view>充值</view>
+      </view>
+      <view class="right">
+        <text class="iconfont icon-icon clr_lightGray"></text>
+      </view>
+    </view> -->
+    <view class="lineItem" bindtap="cash">
+      <view class="left">
+        <text class="iconfont icon-zhangdan clr_lightGray f18"></text>
+      </view>
+      <view class="center">
+        <view>提现</view>
+      </view>
+      <view class="right">
+        <text class="iconfont icon-icon clr_lightGray"></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="link f14">
+    <view class="lineItem border_bottom" bindtap="toBankList">
+      <view class="left">
+        <text class="iconfont icon-card clr_lightGray f20"></text>
+      </view>
+      <view class="center">
+        <view>银行卡</view>
+      </view>
+      <view class="right">
+        <text class="iconfont icon-icon clr_lightGray"></text>
+      </view>
+    </view>
+    <view class="lineItem " bindtap="toBill">
+      <view class="left">
+        <text class="iconfont icon-zhangdan clr_lightGray f18"></text>
+      </view>
+      <view class="center">
+        <view>账单</view>
+      </view>
+      <view class="right">
+        <text class="iconfont icon-icon clr_lightGray"></text>
+      </view>
+    </view>
+    <view class="lineItem border_bottom" bindtap="toPayPassword" style='border-top:2vw solid #f1f1f1'>
+      <view class="left">
+        <text class="iconfont icon-mima_ clr_lightGray f20"></text>
+      </view>
+      <view class="center">
+        <view>修改支付密码</view>
+      </view>
+      <view class="right">
+        <text class="iconfont icon-icon clr_lightGray"></text>
+      </view>
+    </view>
+    <view class="lineItem" bindtap="toLoginPassword">
+      <view class="left">
+        <text class="iconfont icon-mima1 clr_lightGray f20"></text>
+      </view>
+      <view class="center">
+        <view>修改登录密码</view>
+      </view>
+      <view class="right">
+        <text class="iconfont icon-icon clr_lightGray"></text>
+      </view>
+    </view>
+  </view>
+  <button class='loginBtn flex-item f16' bindtap='changeTenant'>切换店铺</button>
+  <button class='loginBtn flex-item f16' bindtap='quitLogin'>退出登录</button>
+</view>

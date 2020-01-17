@@ -1,0 +1,100 @@
+.line {
+  display: flex;
+  padding: 0 2% 0 5%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  color: #000;
+  background: #fff;
+  margin-bottom: 1px;
+}
+
+.line input {
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.line .head {
+  width: 20%;
+}
+
+.classname text {
+  overflow: hidden;
+}
+
+.code {
+  position: absolute;
+  right: 2%;
+  z-index: 100;
+}
+
+.title {
+  font-size: 30rpx;
+  text-indent: 5%;
+  padding-top: 4%;
+  padding-bottom: 2%;
+  display: block;
+}
+
+.wrapper {
+  background: #fff;
+  height: 200rpx;
+}
+
+.wrapper .idcard {
+  float: left;
+  width: 250rpx;
+  height: 180rpx;
+  margin-left: 35rpx;
+  padding-top: 10rpx;
+}
+
+.wrapper .idcard image {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper .alertinfo {
+  float: left;
+  margin-left: 20rpx;
+  margin-top: 45rpx;
+  color: #bbbcbc;
+  font-size: 30rpx;
+}
+
+.wrapper .alertinfo text {
+  display: block;
+}
+
+.next {
+  width: 100%;
+  background: #fff;
+  padding: 2% 0;
+  margin-top: 20rpx;
+}
+
+.submit {
+  width: 40%;
+  line-height: 2;
+  background: #08bb06;
+  color: #fff;
+}
+
+.choosebg {
+  background: #fff;
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 120;
+  overflow-y: scroll;
+}
+
+.choosebg .bankname {
+  padding: 20rpx 0 20rpx 2%;
+  border-bottom: 1rpx solid #f1f1f1;
+}
