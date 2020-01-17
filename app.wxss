@@ -46,9 +46,9 @@ checkbox .wx-checkbox-input {
 }
 
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-  background: #4aa4f0;
+  background: #ff9c00;
   color: #fff !important;
-  border: 1px solid #4aa4f0;
+  border: 1px solid #ff9c00;
 }
 
 checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
@@ -141,19 +141,19 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
  */
 
 .baseBg {
-  background-color: #4aa4f0 !important;
+  background-color: #ff9c00 !important;
 }
 
 .baseColor {
-  color: #4aa4f0 !important;
+  color: #ff9c00 !important;
 }
 
 .shelfBg {
-  background-color: #ff6d06 !important;
+  background-color: #ff9c00 !important;
 }
 
 .shelfColor {
-  color: #ff6d06 !important;
+  color: #ff9c00 !important;
 }
 
 /*
@@ -193,11 +193,11 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 }
 
 .clr_orange {
-  color: #4aa4f0;
+  color: #ff9c00;
 }
 
 .orange_bg {
-  background: #4aa4f0 !important;
+  background: #ff9c00 !important;
 }
 
 .clr_purple {
@@ -367,7 +367,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 .defaultBtn {
   width: 90%;
   line-height: 2.5;
-  background: #4aa4f0;
+  background: #ff9c00;
   color: #fff;
   margin-top: 5vw;
 }

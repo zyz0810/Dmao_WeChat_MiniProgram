@@ -7,11 +7,11 @@
     <text>国家</text>
     <input placeholder='请输入账号' placeholder-style='font-size:32rpx;' value='中国+86' disabled='true'></input>
   </view>
-  <view class='line f14' style="border-bottom:{{focusName?'1px solid #4aa4f0':'1px solid #dddddd'}}">
+  <view class='line f14' style="border-bottom:{{focusName?'1px solid #FFB892':'1px solid #dddddd'}}">
     <text>账号</text>
     <input placeholder='请输入账号' maxlength='11' type='number' placeholder-style='font-size:32rpx;' bindfocus='focusName' bindblur='blurName' bindinput='userName' value='{{userName}}'></input>
   </view>
-  <view class='line f14' style="border-bottom:{{focusPwd?'1px solid #4aa4f0':'1px solid #dddddd'}}">
+  <view class='line f14' style="border-bottom:{{focusPwd?'1px solid #FFB892':'1px solid #dddddd'}}">
     <text>密码</text>
     <input placeholder='请输入密码' type='password' placeholder-style='font-size:32rpx;' bindfocus='focusPwd' bindblur='blurPwd' bindinput='passWord' value='{{passWord}}'></input>
   </view>

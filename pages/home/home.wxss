@@ -111,7 +111,7 @@ page {
   width: 10rpx;
   display: block;
   height: 27rpx;
-  background: #4aa4f0;
+  background: #ffa73d;
   left: -20rpx;
   top: 10rpx;
   content: '';
@@ -130,7 +130,7 @@ page {
   left: 25%;
   content: '';
   height: 8rpx;
-  background: #4aa4f0;
+  background: #ffa73d;
 }
 
 .shelvesRank .line {

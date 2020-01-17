@@ -34,7 +34,7 @@ Page({
 
     }
     return {
-      title: '挑货新零售',
+      title: '店茂小助手',
       path: 'pages/login/login',
       success: function(res) {
         // 转发成功

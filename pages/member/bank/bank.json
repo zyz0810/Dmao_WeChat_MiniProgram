@@ -1,6 +1,3 @@
 {
-    "navigationBarTitleText": "添加银行卡",
-    "usingComponents": {
-      "technical-component": "/component/technical/technical"
-    }
+  "navigationBarTitleText": "添加银行卡"
 }

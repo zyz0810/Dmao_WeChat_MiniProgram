@@ -24,7 +24,7 @@
 }
 
 .tenantList .center .desc {
-  border: 1px solid #4aa4f0;
+  border: 1px solid #ff9c00;
   padding: 4rpx 8rpx;
-  color: #4aa4f0;
+  color: #ff9c00;
 }

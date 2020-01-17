@@ -1,11 +1,11 @@
 <!--pages/login/login.wxml-->
 <view class='container'>
-  <view class='line f14' style="border-bottom:{{focusName?'1px solid #4aa4f0':'1px solid #dddddd'}}">
+  <view class='line f14' style="border-bottom:{{focusName?'1px solid #FFB892':'1px solid #dddddd'}}">
     <text>密码</text>
     <input placeholder='6-20位数字或字母组合' style='padding-left:86rpx;' maxlength='20' password="{{!showPwd}}" placeholder-style='font-size:32rpx;' bindfocus='focuspwd' bindblur='blurpwd' bindinput='password'></input>
     <image src="{{showPwd?'/resources/images/member/open_eye.png':'/resources/images/member/close_eye.png'}}" bindtap='showPwd'></image>
   </view>
-  <view class='line f14' style="border-bottom:{{focusPwd?'1px solid #4aa4f0':'1px solid #dddddd'}}">
+  <view class='line f14' style="border-bottom:{{focusPwd?'1px solid #FFB892':'1px solid #dddddd'}}">
     <text>确认密码</text>
     <input placeholder='请再次输入密码' maxlength='20' password="{{!showPwd}}" placeholder-style='font-size:32rpx;' bindfocus='focusPwdcon' bindblur='blurPwdcon' bindinput='passwordCon'></input>
     <image src="{{showPwd?'/resources/images/member/open_eye.png':'/resources/images/member/close_eye.png'}}" bindtap='showPwd'></image>

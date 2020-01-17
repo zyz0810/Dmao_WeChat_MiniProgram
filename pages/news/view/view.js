@@ -32,7 +32,7 @@ Page({
       })
       WxParse.wxParse('article', 'html', article, that, 5);
     }).view({
-      id: baseUrl.indexOf('www') > -1 ? 1194 : 1085
+      id: 1037
     })
 
   },

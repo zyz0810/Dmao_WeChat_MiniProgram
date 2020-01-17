@@ -25,14 +25,14 @@ page {
 
 .orderTab>text {
   display: inline-block;
-  border: 1px solid #4aa4f0;
+  border: 1px solid #ff9c00;
   padding: 4rpx 10rpx;
   background: #fff;
-  color: #4aa4f0;
+  color: #ff9c00;
 }
 
 .orderTab .active {
-  background: #4aa4f0;
+  background: #ff9c00;
   color: #fff;
 }
 

@@ -14,7 +14,7 @@ App({
   },
   loginOkCallbackList: [],
   onLaunch(opData) {
-    this.globalData.mainColor = '#4aa4f0'
+    this.globalData.mainColor = '#ff9c00'
     // wx.setStorageSync('JSESSIONID', 'D3AA0D27267CEF4847CE7168A302D2D0')
     let that = this
     getSession(this)

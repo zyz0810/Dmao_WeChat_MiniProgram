@@ -1,9 +1,7 @@
 module.exports = {
   //ajax请求baseurl
-  // BASE_URL: "https://www.tiaohuo.com/",
-  BASE_URL: "https://dev.tiaohuo.com/",
-  // BASE_URL: "https://www.laiyijia.com/",
-  // BASE_URL: 'http://192.168.1.54:8080/',
+  BASE_URL: "https://www.huolangjia.cn/",
+  // BASE_URL:'http://192.168.1.42:8082/',
   //登陆失败后尝试重复登陆次数
   LOGIN_ERROR_TRY_COUNT: 5,
   //登陆失败后多长时间间隔重新发起登陆请求
@@ -13,5 +11,5 @@ module.exports = {
   //上传临时文件接口地址
   UPLOAD_TEMP_URL: "applet/file/upload_temp.jhtml",
   //小程序id
-  APPID: "wxd1c43d72f6cfc98d"
+  APPID: "wxb2755692db1682bf"
 }

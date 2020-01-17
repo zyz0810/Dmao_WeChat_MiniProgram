@@ -35,7 +35,7 @@ page {
   line-height: 88rpx;
   border-radius: 88rpx;
   color: #fff;
-  background: #4aa4f0;
+  background: #ff9c00;
 }
 
 .loginBtn::after, .loginBtn::before {
